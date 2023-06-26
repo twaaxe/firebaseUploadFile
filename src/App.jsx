@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ref, uploadBytes } from 'firebase/storage'; //utilisé pour specifier ou et comment stocker les images
+import { ref, uploadBytes } from 'firebase/storage'; //utilisé pour specifier ou et comment stocker les images    -   storage seem to be a service (can't change it as a variable)
 import { storage } from './firebase';
 import { v4 } from 'uuid';
 
@@ -7,7 +7,7 @@ import { v4 } from 'uuid';
 function App() {
 
   const [imageUpload, setImageUlpoad] = useState(null)
-  const uploadImage = () => {
+  const uploadImage = () => {         //upload the image to the database
     if (imageUpload == null) return;
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);//access the storage(firebase) and add a save it in the path as 2e parameter
     uploadBytes(imageRef, imageUpload).then(() => {
